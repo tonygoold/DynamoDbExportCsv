@@ -26,13 +26,16 @@ if (! commander.table)
     process.exit(1);
 }
 
-if(! commander.awsregion)
+if (! commander.awsregion) { commander.awsregion = process.env.AWS_REGION; }
+if (! commander.awsregion)
 {
     console.error("You must specify an aws region");
     commander.outputHelp();
     process.exit(1);
 }
 
+if (! commander.awsid) { commander.awsid = process.env.AWS_ACCESS_KEY_ID; }
+if (! commander.awssecret) { commander.awssecret = process.env.AWS_SECRET_ACCESS_KEY; }
 
 if (! commander.columns)
 {
